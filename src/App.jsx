@@ -1,12 +1,12 @@
 'use client'
 
-import AuctionApp from './components/layout/AuctionApp'
+import Auction_Main from './components/layout/Auction_Main.jsx'
 
 const App = () => {
 
     return (
         <div className="w-screen h-screen flex">
-            <AuctionApp />
+            <Auction_Main />
         </div>
     )
 }
