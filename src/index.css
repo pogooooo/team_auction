@@ -4,3 +4,21 @@
 
 
 .root, body { margin:0; padding:0; }
+
+
+*::-webkit-scrollbar {
+    width: 5px;               /* 스크롤바 너비 */
+    height: 5px;              /* 가로 스크롤용 */
+}
+
+*::-webkit-scrollbar-track {
+    background: #E2E4F2;      /* 트랙 배경색 */
+}
+
+*::-webkit-scrollbar-thumb {
+    background-color: rgba(28, 25, 43, 0.6);
+}
+
+*::-webkit-scrollbar-thumb:hover {
+    background-color: rgba(28, 25, 43, 0.9);   /* 마우스 오버 시 색상 */
+}
