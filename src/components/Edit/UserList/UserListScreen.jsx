@@ -135,7 +135,7 @@ const UserListScreen = (props) => {
 
     return(
         <div onClick={handleClickOutside}
-             className='border-lckBlack text-lckBlack border-[2px] border-b-[0px] p-[5px] rounded-t-md w-[49%] h-[85vh] h-max-[85vh]'>
+             className='border-lckBlack text-lckBlack border-[2px] border-b-[0px] p-[5px] rounded-t-md w-[580px] h-[85vh] h-max-[85vh]'>
             <div className='font-chaney text-lg cursor-default'>user list</div>
 
             {/*categories*/}

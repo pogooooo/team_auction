@@ -9,7 +9,7 @@ const ParticipantTableScreen = (props) => {
     );
 
     return(
-        <div className='border-lckBlack border-[2px] p-[5px] cursor-default rounded-md w-[100%] h-[33vh]'>
+        <div className='border-lckBlack border-[2px] p-[5px] cursor-default rounded-md w-[500px] h-[33vh]'>
             <div className='font-chaney text-lg'>participant table</div>
 
             <div className='mt-[20px] h-[240px] overflow-y-auto'>

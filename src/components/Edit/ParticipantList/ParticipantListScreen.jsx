@@ -65,7 +65,7 @@ const ParticipantListScreen = (props) => {
 
     return(
         <div onClick={handleClickOutside}
-             className='text-lckBlack p-[5px] border-lckBlack border-[2px] border-b-[0px] rounded-t-md w-[100%] h-[50vh]'>
+             className='text-lckBlack p-[5px] border-lckBlack border-[2px] border-b-[0px] rounded-t-md w-[580px] h-[85vh]'>
             <div className='flex justify-between'>
                 <div className='font-chaney text-lg cursor-default'>participant list</div>
                 <div className='text-lckBlack/70 mt-[10px]'>참가자 : {Object.keys(props.participant).length} | 팀장 : {Object.values(props.participant).filter((p) => p.leader === 1).length}</div>
