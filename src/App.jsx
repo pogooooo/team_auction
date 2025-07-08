@@ -1,13 +1,13 @@
 'use client'
 
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import Auction_Main from './components/Auction_Main.jsx'
+import AuctionMain from './components/AuctionMain.jsx'
 import ParticipantEdit from './components/ParticipantEdit.jsx'
 import LoadingScreen from './components/Other/LoadingScreen.jsx'
 import ErrorScreen from './components/Other/ErrorScreen.jsx'
+import Api from './components/Other/Api.jsx'
 
 import {useEffect, useState} from "react";
-import axios from "axios";
 
 const App = () => {
 
@@ -16,50 +16,52 @@ const App = () => {
     const [leader, setLeader] = useState({})
     const [target, setTarget] = useState({})
     const [bidder, setBidder] = useState({})
+    const [order, setOrder] = useState({})
+    const [user, setUser] = useState({})
 
     const [Loading, setLoading] = useState(true)
     const [Error, setError] = useState(false)
 
     const getParticipant = async () => {
-        const response = await axios.get('http://localhost:3000/game/participant')
+        const response = await Api.get('/game/participant')
         setParticipant(Object.values(response)[0])
     }
 
     const getLeader = async () => {
-        const response = await axios.get('http://localhost:3000/game/participant/leader')
+        const response = await Api.get('/game/participant/leader')
         setLeader(Object.values(response)[0])
     }
 
     const getTarget = async () => {
-        const response = await axios.get('http://localhost:3000/game/bid/target')
+        const response = await Api.get('/game/bid/target')
         setTarget(Object.values(response)[0])
     }
 
     const getBidder = async () => {
-        const response = await axios.get('http://localhost:3000/game/bid/bidder')
+        const response = await Api.get('/game/bid/bidder')
         setBidder(Object.values(response)[0])
+    }
+
+    const getOrder = async () => {
+        const response = await Api.get('/game/bid/state')
+        setOrder(Object.values(response)[0])
+    }
+
+    const getUser = async () => {
+        const response = await Api.get('/users')
+        setUser(Object.values(response)[0])
     }
 
     const getData = async () => {
         try{
             setLoading(true)
-            setError(false)
 
             getParticipant()
             getLeader()
             getTarget()
             getBidder()
-
-            // const participantRes = await axios.get('http://localhost:3000/game/participant')
-            // const leaderRes = await axios.get('http://localhost:3000/game/participant/leader')
-            // const targetRes = await axios.get('http://localhost:3000/game/bid/target')
-            // const bidderRes = await axios.get('http://localhost:3000/game/bid/bidder')
-            //
-            // // 상태에 저장
-            // setParticipant(Object.values(participantRes)[0]);
-            // setLeader(Object.values(leaderRes)[0])
-            // setTarget(Object.values(targetRes)[0])
-            // setBidder(Object.values(bidderRes)[0])
+            getOrder()
+            getUser()
 
         }
         catch (err){
@@ -72,11 +74,10 @@ const App = () => {
 
     }
 
-    //target 순서 지정 명령
+    //target 순서 지정
     const setTargetData = async () => {
         try{
-            setError(false)
-            await axios.post('http://localhost:3000/game/bid/target');
+            await Api.post('/game/bid/target');
         }
         catch (err){
             setError(true)
@@ -85,7 +86,7 @@ const App = () => {
     }
 
     useEffect(() => {
-        const socket = new WebSocket('http://localhost:3000')
+        const socket = new WebSocket('https://team-auction-api.onrender.com')
 
         socket.onopen = () => {
             console.log('webSocket connected')
@@ -116,6 +117,22 @@ const App = () => {
                 getTarget()
                 return
             }
+
+            if(data === 'BIDDER_UPDATE') {
+                getBidder()
+                return
+            }
+
+            if(data === 'ORDER_UPDATE') {
+                getOrder()
+                return
+            }
+
+            if(data === 'USER_UPDATE') {
+                getUser()
+                return
+            }
+
         }
 
         socket.onclose = () => {
@@ -133,7 +150,7 @@ const App = () => {
 
     return (
         <BrowserRouter>
-            <div className="w-screen h-screen flex items-center justify-center">
+            <div className="bg-lckWhite w-screen h-screen flex items-center justify-center">
                 {Loading ? (
                     <LoadingScreen />
                 ) : Error ? (
@@ -142,17 +159,25 @@ const App = () => {
                     <Routes>
                         <Route
                             path="/"
-                            element={<Auction_Main
+                            element={<AuctionMain
                                 setLoading={setLoading}
                                 setError={setError}
                                 participant={participant}
                                 bidder={bidder}
                                 target={target}
                                 leader={leader}
+                                order={order}
                                 setTarget={setTargetData}/>
                             }
                         />
-                        <Route path="/participant" element={<ParticipantEdit />} />
+                        <Route
+                            path="/participant"
+                            element={<ParticipantEdit
+                                participant={participant}
+                                user = {user}
+                                leader = {leader}
+                            />}
+                        />
                     </Routes>
                 )}
             </div>

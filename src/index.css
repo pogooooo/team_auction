@@ -3,12 +3,12 @@
 @tailwind utilities;
 
 
-.root, body { margin:0; padding:0; }
+.root, body { margin:0; padding:0; background-color: #E2E4F2}
 
 
 *::-webkit-scrollbar {
     width: 5px;               /* 스크롤바 너비 */
-    height: 5px;              /* 가로 스크롤용 */
+    height: 0px;              /* 가로 스크롤용 */
 }
 
 *::-webkit-scrollbar-track {

@@ -1,9 +1,9 @@
 import {useState} from "react";
-import axios from "axios";
+import Api from '../../Other/Api.jsx'
+import WarningScreen from "../../Other/WarningScreen.jsx";
 
 const Bidder = (props) => {
     const [open, setOpen] = useState(false);
-    const [point, setPoint] = useState(0);
     const [team, setTeam] = useState(null);
 
     const [warning, setWarning] = useState('')
@@ -12,7 +12,7 @@ const Bidder = (props) => {
         const value = e.target.value;
 
         if (/^\d+$/.test(value)) {
-            setPoint(value);
+            props.setPoint(value);
         }
     }
 
@@ -24,20 +24,20 @@ const Bidder = (props) => {
             return
         }
 
-        if(props.leader[team] < point){
+        if(props.leader[team] < props.point){
             setWarning('잔여 포인트가 부족합니다.');
             setTimeout(() => setWarning(''), 2000);
             return
         }
 
-        if (props.bidder && Object.keys(props.bidder).length > 0 && props.bidder.point >= Number(point)) {
+        if (props.bidder && Object.keys(props.bidder).length > 0 && props.bidder.point >= Number(props.point)) {
             setWarning(`현재 입찰 포인트(${props.bidder.point}p)보다 높은 금액을 입력하세요.`);
             setTimeout(() => setWarning(''), 2000);
             return;
         }
 
         try {
-            const CurrentBidder = await axios.post('http://localhost:3000/game/bid/bidder', {name: team, point: Number(point)});
+            const CurrentBidder = await Api.post('/game/bid/bidder', {name: team, point: Number(props.point)});
             console.log('Server response:', CurrentBidder.data);
             return
         } catch (err) {
@@ -114,9 +114,7 @@ const Bidder = (props) => {
             </div>
 
             {warning && (
-                <div className={`absolute font-bold text-sm p-[10px] text-lckWhite right-[10px] top-[50px] bg-lckBlack rounded-md`}>
-                    WARNING : {warning}
-                </div>
+                <WarningScreen warning={warning} />
             )}
         </div>
     );

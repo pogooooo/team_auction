@@ -6,24 +6,6 @@ const Participants = (props) => {
 
     const [SelectedFilter, setSelectedFilter] = useState(['TOP', 'MID', 'JUG', 'ADC', 'SUP']);
 
-    const tempList = {
-        participants: {
-            pogoo: {
-                Line: 'ADC',
-                Tier: 'GOLD 2',
-                Champ: '카시오페아, 트린다미어, 프웨스티드페이트',
-                team: null
-            },
-            pogooo: {
-                Line: 'MID',
-                Tier: 'GOLD 2',
-                Champ: '아리, 신드라, 베이가',
-                team: 'asdf'
-            },
-
-        }
-    }
-
     const noneSelected = 'cursor-pointer bg-lckWhite border-lckBlack border-[2px] rounded-md h-[30px] mr-[5px] text-center'
     const selected = 'cursor-pointer bg-lckBlack border-lckBlack text-lckWhite border-[2px] rounded-md h-[30px] mr-[5px] text-center'
 
@@ -33,6 +15,8 @@ const Participants = (props) => {
                 ? prev.filter((f) => f !== filter)
                 : [...prev, filter]
         );
+
+        console.log(SelectedFilter)
     };
 
     if (!props.participant) return null;
