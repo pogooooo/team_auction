@@ -53,10 +53,10 @@ const Participants = (props) => {
 
             {filteredParticipants.map(([name, info]) => (
                 <div key={name} className='flex w-[100%] justify-center font-bold'>
-                    <div className='w-[20%] p-[3px] text-center border-b-[1px] border-r-[1px] border-lckBlack/50'>{name}</div>
+                    <div className='overflow-x-auto whitespace-nowrap w-[137px] p-[3px] text-center border-b-[1px] border-r-[1px] border-lckBlack/50'>{name}</div>
                     <div className='w-[10%] p-[3px] text-center border-b-[1px] border-r-[1px] border-lckBlack/50'>{info.line}</div>
-                    <div className='w-[20%] p-[3px] text-center border-b-[1px] border-r-[1px] border-lckBlack/50'>{info.tier}</div>
-                    <div className='w-[40%] p-[3px] text-center border-b-[1px] border-lckBlack/50'>{info.champ}</div>
+                    <div className='w-[22%] p-[3px] text-center border-b-[1px] border-r-[1px] border-lckBlack/50'>{info.tier}</div>
+                    <div className='overflow-x-auto whitespace-nowrap w-[136px] p-[3px] text-center border-b-[1px] border-lckBlack/50'>{info.champ}</div>
                 </div>
             ))}
 

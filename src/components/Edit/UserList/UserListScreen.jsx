@@ -122,6 +122,15 @@ const UserListScreen = (props) => {
             champ,
         });
         console.log('챔피언 업데이트 성공:', response.data);
+
+        const participantData = props.participant[nickname];
+        if (participantData && participantData.line === line) {
+            const updateParticipant = await Api.put('/game/participant/edit/line', {
+                nickname,
+                line,
+            });
+            console.log('참가자 챔피언 동기화 성공:', updateParticipant.data);
+        }
     }
 
     return(
