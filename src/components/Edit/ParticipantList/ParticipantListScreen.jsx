@@ -50,6 +50,12 @@ const ParticipantListScreen = (props) => {
 
     const handleRemoveParticipant = async () => {
         const nickname = deletePopup.targetNickname;
+
+        const leaderRes = await Api.put('/game/participant/edit/unleader', {
+            nickname: nickname
+        });
+        console.log('리더 해제 성공:', leaderRes.data);
+
         const response = await Api.delete('/game/participant/delete', {
             data: { nickname }
         });
