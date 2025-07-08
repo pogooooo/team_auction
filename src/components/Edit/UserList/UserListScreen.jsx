@@ -180,7 +180,7 @@ const UserListScreen = (props) => {
                                                value={editingChamps[`${username}_${line}`] !== undefined  ? editingChamps[`${username}_${line}`] : info.champ}
                                                onBlur={() => {updateChamp(username, line, editingChamps[`${username}_${line}`]);
                                                                     setEditingChamps((prev) => {const newState = { ...prev }; delete newState[`${username}_${line}`]; return newState;});}}
-                                               className={`${index % 2 === 0 ? 'bg-lckWhite' : 'bg-lckBlack/0'} w-[100%] outline-0 text-center bg-lckWhite`}/>
+                                               className={`${index % 2 === 0 ? 'bg-lckWhite' : 'bg-lckBlack/10'} w-[100%] outline-0 text-center bg-lckWhite`}/>
                                     </div>
                                 </div>
                             ))}
