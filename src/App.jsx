@@ -86,6 +86,7 @@ const App = () => {
     }
 
     useEffect(() => {
+        // const socket = new WebSocket('http://localhost:3000/')
         const socket = new WebSocket('https://team-auction-api.onrender.com')
 
         socket.onopen = () => {

@@ -15,8 +15,6 @@ const Participants = (props) => {
                 ? prev.filter((f) => f !== filter)
                 : [...prev, filter]
         );
-
-        console.log(SelectedFilter)
     };
 
     if (!props.participant) return null;
@@ -51,14 +49,16 @@ const Participants = (props) => {
 
             <hr className='border-lckBlack border-[1px] mt-[5px] mb-[10px]'/>
 
-            {filteredParticipants.map(([name, info]) => (
-                <div key={name} className='flex w-[100%] justify-center font-bold'>
-                    <div className='overflow-x-auto whitespace-nowrap w-[137px] p-[3px] text-center border-b-[1px] border-r-[1px] border-lckBlack/50'>{name}</div>
-                    <div className='w-[10%] p-[3px] text-center border-b-[1px] border-r-[1px] border-lckBlack/50'>{info.line}</div>
-                    <div className='w-[22%] p-[3px] text-center border-b-[1px] border-r-[1px] border-lckBlack/50'>{info.tier}</div>
-                    <div className='overflow-x-auto whitespace-nowrap w-[136px] p-[3px] text-center border-b-[1px] border-lckBlack/50'>{info.champ}</div>
-                </div>
-            ))}
+            <div className='h-[80%] overflow-y-auto'>
+                {filteredParticipants.map(([name, info]) => (
+                    <div key={name} className='flex w-[100%] justify-center font-bold'>
+                        <div className='overflow-x-auto whitespace-nowrap w-[137px] p-[3px] text-center border-b-[1px] border-r-[1px] border-lckBlack/50'>{name}</div>
+                        <div className='w-[10%] p-[3px] text-center border-b-[1px] border-r-[1px] border-lckBlack/50'>{info.line}</div>
+                        <div className='w-[22%] p-[3px] text-center border-b-[1px] border-r-[1px] border-lckBlack/50'>{info.tier}</div>
+                        <div className='overflow-x-auto whitespace-nowrap w-[136px] p-[3px] text-center border-b-[1px] border-lckBlack/50'>{info.champ}</div>
+                    </div>
+                ))}
+            </div>
 
             <Link to='/participant' className='text-lckWhite border-[2px] border-lckBlack text-center bg-lckBlack w-[50px] rounded-md p-[5px] cursor-pointer absolute right-[10px] bottom-[5px] active:bg-lckWhite active:text-lckBlack'>Edit</Link>
 

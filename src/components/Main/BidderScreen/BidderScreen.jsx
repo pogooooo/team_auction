@@ -21,7 +21,7 @@ const BidderScreen = (props) => {
             setTimeout(() => setWarning(''), 2000);
         }
 
-        const targetName = Object.entries(props.target)[0][0];
+        const targetName = Object.entries(props.target)[props.order][0];
         const targetLine = props.target[targetName].line;
 
         const duplicate = Object.entries(props.participant).some(([, info]) => {
@@ -43,11 +43,12 @@ const BidderScreen = (props) => {
         //타겟의 팀 지정
         await Api.put('/game/participant/edit/team', {nickname:targetName, team:props.bidder.name})
 
-        //경매 0번 삭제
+        //경매 타겟 삭제
         await Api.post('/game/bid/target/sell')
     }
 
     const outflow = async () => {
+        await Api.post('/game/bid/bidder/clear')
         await Api.post('/game/bid/state', {order:props.order+1})
     }
 
