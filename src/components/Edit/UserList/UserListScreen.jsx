@@ -178,9 +178,19 @@ const UserListScreen = (props) => {
                                     <div className='p-[5px] w-[65%] border-b-[1px] border-lckBlack/50 flex items-center justify-center'>
                                         <input onChange={(e) => {setEditingChamps((prev) => ({...prev, [`${username}_${line}`]: e.target.value, }));}}
                                                value={editingChamps[`${username}_${line}`] !== undefined  ? editingChamps[`${username}_${line}`] : info.champ}
-                                               onBlur={() => {updateChamp(username, line, editingChamps[`${username}_${line}`]);
-                                                                    setEditingChamps((prev) => {const newState = { ...prev }; delete newState[`${username}_${line}`]; return newState;});}}
-                                               className={`${index % 2 === 0 ? 'bg-lckWhite' : 'bg-lckBlack/10'} w-[100%] outline-0 text-center bg-lckWhite`}/>
+                                               onBlur={() => {
+                                                   const champToUpdate = editingChamps[`${username}_${line}`] !== undefined
+                                                       ? editingChamps[`${username}_${line}`]
+                                                       : info.champ;
+
+                                                   updateChamp(username, line, champToUpdate);
+                                                   setEditingChamps((prev) => {
+                                                       const newState = { ...prev };
+                                                       delete newState[`${username}_${line}`];
+                                                       return newState;
+                                                   });
+                                               }}
+                                               className={`bg-opacity-0 w-[100%] outline-0 text-center bg-lckWhite`}/>
                                     </div>
                                 </div>
                             ))}
