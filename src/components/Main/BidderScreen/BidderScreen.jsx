@@ -55,7 +55,7 @@ const BidderScreen = (props) => {
     return(
         <div className='flex w-[1200px] justify-center mt-[70px]'>
             <Target target={props.target} order={props.order} />
-            <Bidder leader={props.leader} bidder={props.bidder} point={point} setPoint={setPoint} />
+            <Bidder leader={props.leader} bidder={props.bidder} point={point} setPoint={setPoint} participant={props.participant} target={props.target} order={props.order} />
             <div className='w-[170px] h-[180px] mt-[25px]'>
                 {/*확정 버튼*/}
                 <div onClick={bidConfirm} className='cursor-pointer border-[2px] border-lckBlack w-[170px] h-[85px] rounded-md bg-lckBlack font-sans font-bold text-lckWhite text-xl flex justify-center items-center transform transition duration-150 ease-in-out hover:scale-[1.03] active:bg-lckWhite active:text-lckBlack'>확정</div>

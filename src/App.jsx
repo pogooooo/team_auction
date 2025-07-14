@@ -151,7 +151,7 @@ const App = () => {
 
     return (
         <BrowserRouter>
-            <div className="bg-lckWhite w-screen h-screen flex items-center justify-center">
+            <div className="bg-lckWhite w-screen min-h-screen flex items-center justify-center">
                 {Loading ? (
                     <LoadingScreen />
                 ) : Error ? (

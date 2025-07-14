@@ -9,10 +9,10 @@ const ParticipantTableScreen = (props) => {
     );
 
     return(
-        <div className='border-lckBlack border-[2px] p-[5px] cursor-default rounded-md w-[500px] h-[33vh]'>
+        <div className='border-lckBlack border-[2px] p-[5px] cursor-default border-b-0 rounded-t-md w-[500px] h-[85vh]'>
             <div className='font-chaney text-lg'>participant table</div>
 
-            <div className='mt-[20px] h-[240px] overflow-y-auto'>
+            <div className='mt-[20px] h-[90%] overflow-y-auto'>
                 <div className='flex'>
                     {['TOP', 'JUG', 'MID', 'ADC', 'SUP'].map((line, idx, arr) => (
                         <div className={`border-lckBlack border w-[20%] h-[30px] flex items-center justify-center ${idx === arr.length - 1 ? 'border-r' : 'border-r-0'} ${idx === 0 ? 'rounded-tl-md' : ''} ${idx === arr.length - 1 ? 'rounded-tr-md' : ''}`}>

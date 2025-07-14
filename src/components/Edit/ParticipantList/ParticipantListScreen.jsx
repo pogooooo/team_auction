@@ -71,7 +71,7 @@ const ParticipantListScreen = (props) => {
                 <div className='text-lckBlack/70 mt-[10px]'>참가자 : {Object.keys(props.participant).length} | 팀장 : {Object.values(props.participant).filter((p) => p.leader === 1).length}</div>
             </div>
 
-            <div className="w-[100%] h-[80%] mt-[20px] overflow-y-auto flex flex-col">
+            <div className="w-[100%] h-[90%] mt-[20px] overflow-y-auto flex flex-col">
                 {/* list title */}
                 <div className="flex">
                     <div className="p-[5px] border-lckBlack border-[1px] rounded-tl-md w-[35%] flex items-center justify-center">

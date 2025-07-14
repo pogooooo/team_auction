@@ -157,7 +157,7 @@ const UserListScreen = (props) => {
                 </div>
             </div>
 
-            <div className='w-[100%] max-h-[calc(85vh-150px)] overflow-y-auto mt-[30px]'>
+            <div className='w-[100%] h-[80%] overflow-y-auto mt-[30px]'>
                 {/*list title*/}
                 <div className='flex'>
                     <div className='p-[5px] border-lckBlack border-[1px] rounded-tl-md w-[35%] flex items-center justify-center'>닉네임</div>

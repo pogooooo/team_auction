@@ -30,6 +30,20 @@ const Bidder = (props) => {
             return
         }
 
+        const targetName = Object.entries(props.target)[props.order][0];
+        const targetLine = props.target[targetName].line;
+        console.log(targetName, targetLine)
+
+        const duplicate = Object.entries(props.participant).some(([, info]) => {
+            return info.team === team && info.line === targetLine;
+        });
+
+        if (duplicate) {
+            setWarning(`${team}팀에 ${targetLine} 라인 팀원이 존재합니다.`);
+            setTimeout(() => setWarning(''), 2000);
+            return;
+        }
+
         if (props.bidder && Object.keys(props.bidder).length > 0 && props.bidder.point >= Number(props.point)) {
             setWarning(`현재 입찰 포인트(${props.bidder.point}p)보다 높은 금액을 입력하세요.`);
             setTimeout(() => setWarning(''), 2000);
