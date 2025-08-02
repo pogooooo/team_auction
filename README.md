@@ -1,12 +1,8 @@
-# React + Vite
+# 웹 사이트 링크
+https://team-auction.vercel.app/
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+# 사용법
+edit 화면에서 내전 참가자 정보 입력 후 메인화면에서 경매 진행
 
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+# 주의사항
+edit 화면에서 새로고침 시 오류발생
